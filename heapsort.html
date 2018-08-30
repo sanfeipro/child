@@ -1,0 +1,59 @@
+<html>
+
+<head>
+	<script>
+		let heapsize;
+
+		function heapify(array, index) {
+			let largest = index;  /* 父节点 */
+			let left = 2 * index + 1;  /* 左子节点 */
+			let right = 2 * (index + 1);  /* 右子节点 */
+
+			/* 从index, left, right三者中找出最大的一个。 */
+			if (left < heapsize && array[largest] < array[left]) {
+				largest = left;
+			}
+
+			if (right < heapsize && array[largest] < array[right]) {
+				largest = right;
+			}
+
+			if (largest != index) {
+				swap(array, largest, index);
+				heapify(array, largest);
+			}
+		}
+
+		function bulid_max_heap(array) {
+			heapsize = array.length;
+			for (let index = Math.floor(array.length / 2); index >= 0; index--) {
+				heapify(array, index);
+			}
+		}
+
+		function heapsort(array) {
+			bulid_max_heap(array);
+			for (let index = array.length - 1; index > 0; index--) {
+				swap(array, 0, index);
+				heapsize--;
+				heapify(array, 0);
+			}
+		}
+
+		function swap(array, i, j) {
+			var temp = array[i];
+			array[i] = array[j];
+			array[j] = temp;
+		}
+
+		/* 测试 */
+		var numbers = [9, 5, 2, 7, 108, 64, 72, 12];
+		heapsort(numbers);
+		console.log(numbers);
+	</script>
+</head>
+
+<body>
+</body>
+
+</html>
