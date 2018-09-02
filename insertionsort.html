@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <script>
+
+        function insertion_sort(A) {
+            for (let j = 1; j < A.length; j++) {
+                let key = A[j];
+                // Insert A[j] into the sorted sequence A[0...j-1].
+                let i = j - 1;
+                while (i > 0 && A[i] > key) {
+                    A[i + 1] = A[i];
+                    i--;
+                }
+                A[i + 1] = key;
+            }
+        }
+
+        var a = [1, 2, 4, 5, 6, 3];
+        insertion_sort(a);
+        console.log(a);
+
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
